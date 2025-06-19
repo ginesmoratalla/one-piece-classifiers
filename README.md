@@ -1,0 +1,2 @@
+- Dataset: [One Piece image classifier, Kaggle](https://www.kaggle.com/datasets/ibrahimserouis99/one-piece-image-classifier)
+- Code: [ginesmoratalla](https://github.com/ginesmoratalla)
