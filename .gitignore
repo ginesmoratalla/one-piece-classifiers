@@ -6,7 +6,7 @@ __pycache__/
 *.DS_Store
 
 # Images not tracked
-dataset/Data/
+dataset/
 
 # C extensions
 *.so
