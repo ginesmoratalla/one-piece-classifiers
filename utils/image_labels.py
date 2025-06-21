@@ -3,7 +3,7 @@ import torch
 import pandas as pd
 import cv2
 # import numpy as np
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 # --- Initial setup ---
 device = "mps"
@@ -25,8 +25,10 @@ for idx, label in enumerate(class_names['Class']):
 
         raw_img = cv2.imread(os.path.join(character_path, img))
         resized_img = cv2.resize(raw_img, (IMG_SIZE, IMG_SIZE))
-        image_tensor = torch.from_numpy(resized_img).permute(2, 0, 1)
-        dataset.append((image_tensor, idx))
 
+        # Switch from BGR to RGB (color order)
+        image_tensor = torch.from_numpy(resized_img).permute(2, 0, 1)
+
+        dataset.append((image_tensor, idx))
 # ----------------------------------
-# torch.save(dataset, DATASET_PATH)
+torch.save(dataset, DATASET_PATH)
