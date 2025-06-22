@@ -19,7 +19,7 @@ class OnePieceDataset(Dataset):
         self.x = torch.stack([tuple[0] for tuple in xy])
         self.y = [tuple[1] for tuple in xy]
         self.num_samples = self.x.shape[0]
-        print(self.x.shape)
+        # print(self.x.shape)
 
     def __getitem__(self, index):
         return self.x[index], self.y[index]
