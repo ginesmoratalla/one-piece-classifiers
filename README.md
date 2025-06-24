@@ -3,9 +3,9 @@
 So far...
 
 Test set accuracy $\approx$ 66.95%
-<p float="center">
-  <img src="res/CNN/cnn_test_confussion_matrix_67.png" width="400" /> 
-</p>
+<div align="center">
+  <img src="res/CNN/cnn_test_confussion_matrix_67.png" width="350" /> 
+</div>
 
 ## About
 - Dataset: [One Piece image classifier, Kaggle](https://www.kaggle.com/datasets/ibrahimserouis99/one-piece-image-classifier)
