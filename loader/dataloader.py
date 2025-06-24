@@ -1,7 +1,5 @@
 import torch
-import torchvision.datasets as datasets
 from torch.utils.data import Dataset, DataLoader, TensorDataset
-import torchvision.transforms as transforms
 from sklearn.model_selection import train_test_split
 import numpy as np
 import os
