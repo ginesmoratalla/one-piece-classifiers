@@ -15,23 +15,64 @@ class CNN(nn.Module):
     def __init__(self, num_classes) -> None:
         super(CNN, self).__init__()
 
-        self.conv1 = nn.Conv2d(in_channels=3, out_channels=6, kernel_size=5)
-        self.pool = nn.MaxPool2d(kernel_size=2, stride=2)
-        self.conv2 = nn.Conv2d(in_channels=6, out_channels=16, kernel_size=5)
+        self.conv1 = nn.Sequential(
+            nn.Conv2d(in_channels=3, out_channels=64, kernel_size=4),
+            nn.ReLU(),
+            nn.BatchNorm2d(64),
+        )
 
-        self.fc1 = nn.Linear(in_features=16*34*34, out_features=128)
-        self.fc2 = nn.Linear(in_features=128, out_features=64)
-        self.fc3 = nn.Linear(in_features=64, out_features=num_classes)
+        self.conv2 = nn.Sequential(
+            nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2, stride=2)
+        )
+
+        self.conv3 = nn.Sequential(
+            nn.Conv2d(in_channels=128, out_channels=256, kernel_size=3),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=3, stride=3)
+        )
+
+        self.conv4 = nn.Sequential(
+            nn.Conv2d(in_channels=256, out_channels=256, kernel_size=3),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=3, stride=2)
+        )
+
+        self.conv5 = nn.Sequential(
+            nn.Conv2d(in_channels=256, out_channels=128, kernel_size=3),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=3, stride=2)
+        )
+
+        self.fc1 = nn.Sequential(
+            nn.Flatten(),
+            nn.Linear(in_features=128*3*3, out_features=256),
+            nn.LeakyReLU(),
+            nn.BatchNorm1d(256),
+        )
+
+        self.fc2 = nn.Sequential(
+            nn.Linear(in_features=256, out_features=128),
+            nn.LeakyReLU(),
+            nn.BatchNorm1d(128),
+        )
+
+        self.fc3 = nn.Linear(in_features=128, out_features=num_classes)
+        self.dropout = nn.Dropout(p=0.5)
 
     def forward(self, x):
 
-        x = self.pool(F.relu(self.conv1(x)))
-        x = self.pool(F.relu(self.conv2(x)))
-        x = x.reshape(-1, 16*34*34)
-        x = F.relu(self.fc1(x))
-        x = F.relu(self.fc2(x))
-        x = self.fc3(x)
+        x = self.conv1(x)
+        x = self.conv2(x)
+        x = self.conv3(x)
+        x = self.conv4(x)
+        x = self.conv5(x)
 
+        # x = x.reshape(-1, 16*34*34)
+        x = self.dropout(self.fc1(x))
+        x = self.dropout(self.fc2(x))
+        x = self.fc3(x)
         return x
 
 
