@@ -4,8 +4,7 @@ So far...
 
 Test set accuracy $\approx$ 66.95%
 <p>
-  <img src="res/CNN/cnn_test_confussion_matrix_67.png" width="350"/> 
-  <img src="res/CNN/training_loss_cnn_67.png" width="400" /> 
+  <img src="res/CNN/cnn_67.png" width="800"/> 
 </p>
 
 ## About
