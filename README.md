@@ -1,14 +1,16 @@
 
 ## Convolutional Neural Network Results
-So far...
-
-Test set accuracy $\approx$ 66.95%
+- Test set accuracy $\approx$ 66.95%
+- So far overfits (potential solution -> better dataset preprocessing)
+  
 <div align="center">
-  <img src="res/CNN/cnn_loss_acc_2.png" width="800"/> 
+  <img src="res/CNN/cnn_loss_acc_2.png" width="750"/> 
 </div>
 
+## 
+
 <div align = "center">
-  <img src="res/CNN/cnn_test_confussion_matrix_2.png" width="300"/> 
+  <img src="res/CNN/cnn_test_confussion_matrix_2.png" width="400"/> 
 </div>
 
 ## About
