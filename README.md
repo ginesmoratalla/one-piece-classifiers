@@ -17,7 +17,7 @@
 ## 2. Convolutional Neural Network Results (Greyscale)
 
 <div align="center">
-  <img src="res/CNN/CNN_greyscale_loss_acc_1.png" width="750"/> 
+  <img src="res/CNN/CNN_Greyscale_loss_acc_1-1.png" width="750"/> 
 </div>
 
 ## 
